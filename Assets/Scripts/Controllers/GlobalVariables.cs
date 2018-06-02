@@ -26,7 +26,7 @@ public class GlobalVariables
 	public static int _xPosPlayer;
 	public static int _yPosPlayer;
 
-	public static float _playerVelocity = 0.9f;
+	public static float _playerVelocity = 1f;
 	public static List<int> _walkablesTiles = new List<int>();
 	public static bool _followPlayer = true;
 

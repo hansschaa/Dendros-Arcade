@@ -96,6 +96,13 @@ public class MechanicController : MonoBehaviour
 		while(true)
 		{
 			contador = ViewController._currentGameModel._postEntryTime;
+
+			if(this.GetComponent<ViewController>()._portalInstance == null)
+				putPortal();
+
+			GlobalVariables._allowPurpleBonus = true;
+			_timeCountText.color = new Color(255,0,0,255);
+			
 			while(contador > 0)
 			{
 				contador--;
@@ -103,11 +110,7 @@ public class MechanicController : MonoBehaviour
 				yield return new WaitForSeconds(1f);
 			}
 
-			if(this.GetComponent<ViewController>()._portalInstance == null)
-				putPortal();
-
-			GlobalVariables._allowPurpleBonus = true;
-			_timeCountText.color = new Color(255,0,0,255);
+			_timeCountText.color = new Color(0,255,0,255);
 
 			contador = 10;
 			while(contador > 0)
@@ -116,9 +119,6 @@ public class MechanicController : MonoBehaviour
 				_timeCountText.text = contador.ToString();
 				yield return new WaitForSeconds(1f);
 			}
-			_timeCountText.color = new Color(0,255,0,255);
-
-			// Destroy(this.gameObject.GetComponent<ViewController>()._portalInstance); 
 
 		}
 	}

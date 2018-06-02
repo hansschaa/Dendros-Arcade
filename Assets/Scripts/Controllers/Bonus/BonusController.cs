@@ -149,7 +149,7 @@ public class BonusController : MonoBehaviour
 				else
 				{
 					this._soundController.playSound(2);
-					switch(this._idActiveChildLight)
+					switch(this._idActiveChildVelocity)
 					{
 						case 2:
 						GameObject.Find("KaiPlayer(Clone)").gameObject.GetComponent<PlayerBehaviour>().speed = GlobalVariables._playerVelocity-0.3f;

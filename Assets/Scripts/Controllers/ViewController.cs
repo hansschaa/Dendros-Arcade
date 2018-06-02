@@ -84,13 +84,13 @@ public class ViewController : MonoBehaviour
 	/// </summary>
 	void Update()
 	{
-		if(Input.GetButtonDown("Fire1"))
+		if(Input.GetButtonDown("Enter"))
 		{
 			if(!_loadingSceneCanvas.activeInHierarchy && !this._gameSceneCanvas.activeInHierarchy)
 				pressEnter();
 		}
 
-		else if(Input.GetButtonDown("Fire2"))
+		else if(Input.GetButtonDown("Exit"))
 		{
 			Application.Quit();
 		}
@@ -381,12 +381,6 @@ public class ViewController : MonoBehaviour
 
 		}
 
-		else if(ViewController._currentGameModel._bonusList.Count==2)
-		{
-			
-
-		}
-
 		else if(ViewController._currentGameModel._bonusList.Count==3)
 		{
 			if(ViewController._currentGameModel._bonusList.Contains("green") && ViewController._currentGameModel._bonusList.Contains("yellow") && ViewController._currentGameModel._bonusList.Contains("gray"))
@@ -638,7 +632,12 @@ public class ViewController : MonoBehaviour
         Destroy(this._playerInstance);
 		this._playerInstance = Instantiate(_player, this.getNewPosition(false)- MapGeneratorController._offsetMap, Quaternion.identity, this._gameObjectsGameScene.transform) as GameObject;
 		if(borisHit)
+		{
 			_playerInstance.transform.GetChild(0).gameObject.GetComponent<Animator>().SetBool("isDeath",true);
+			_playerInstance.GetComponent<PlayerBehaviour>()._sleep = true;
+
+		}
+			
     }
 
 	private IEnumerator waitThenCallback(float time, Action callback)
